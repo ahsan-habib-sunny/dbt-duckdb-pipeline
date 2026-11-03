@@ -1,5 +1,8 @@
+# name of the project
 name: analytics
+version: '1.0.0'
 
+# this setting configures which "profile" dbt uses for this project
 profile: analytics
 
 seed-paths: ["seeds"]
@@ -8,3 +11,11 @@ macro-paths: ["macros"]
 clean-targets:
   - "target"
   - "dbt_packages"
+flags:
+  require_generic_test_arguments_property: true
+
+# table or view materializations are the default, but you can override this for specific models
+
+models:
+  analytics:
+    +materialized: table 
